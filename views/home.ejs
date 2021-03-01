@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- css stylesheets -->
+
+  <link rel="stylesheet" href="css/style.css">
+  <!-- icons -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js">
+
+  </script>
+
+  <!--bootstrap script-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Ubuntu&display=swap" rel="stylesheet">
+
+
+  <title>ProfileSET</title>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-4 title">
+        <h3>HODLINFO <span style="color:white">.com</span></h3>
+        <h6>Powered By <span style="color:#50C7C7">Finstreet</span></h6>
+
+      </div>
+
+      <div class="col-lg-4 ddowns">
+        <div class="btn-group  ">
+          <button class="btn btn-secondary btn-md dropdown-toggle btn-info btn-dark inr" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            INR
+          </button>
+
+          <button class="btn btn-secondary btn-md dropdown-toggle btn-info btn-dark btc" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            BTC
+          </button>
+
+        </div>
+      </div>
+
+
+
+      <div class="col-lg-4 last">
+        <button type="button" class="btn btn-dark btn-lg dbn tele"><i class="fab fa-telegram"></i>Connect Telegram</button>
+
+        <label class="switch">
+  <input type="checkbox">
+  <span class="slider round"></span>
+</label>
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+  <table class="table table-borderless table-dark">
+    <thead class="heading">
+      <tr>
+        <th scope="col-1">#</th>
+        <th scope="col-2">Name</th>
+        <th scope="col-3">Last</th>
+        <th scope="col-4">Buy/Sell Price</th>
+        <th scope="col-3">Volume</th>
+        <th scope="col-1">base_unit</th>
+     </tr>
+    </thead>
+
+
+  <% var data=JSON.parse(Buffer.concat(apid).toString()); %>
+  <% console.log(data); %>
+    <%  var i=1;%>
+
+
+
+
+ <%      Object.keys(data).forEach(function(key) { %>
+
+
+<% if(i<=10) { %>
+  <tbody class="tbd">
+    <tr>
+      <th scope="row"><%=i%></th>
+     <td><%=data[key].name%></td>
+     <td>₹<%=data[key].last%></td>
+     <td>₹<%=data[key].buy%>/<%=data[key].sell%></td>
+     <td><%=data[key].volume%></td>
+     <td><%=data[key].base_unit%></td>
+    </tr>
+      <% i+=1;  %>
+    <%  return true; %>
+<% } else { %>
+<%  return false; %>
+<% } %>
+
+
+         <% }); %>
+           </tbody>
+         </table>
+
+
+
+
+
+</body>
+
+</html>
